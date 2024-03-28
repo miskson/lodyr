@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Lodyr: YT to .mp3</title>
+</head>
+
+<body>
+    <form action="/convert-mp3" method="POST" id="convert-form">
+        <h1>Lodyr</h1>
+        <h2>YouTube to mp3 loader</h2>
+        <input type="text" name="videoId" placeholder="paste youtube link" />
+        <button id="convert-btn">Convert</button>
+    </form>
+    <% if(typeof success !="undefined" && success) { %>
+        <div class="success">
+            <p>
+                <%= song_title %>
+                    <a href="<%= song_link %>">
+                        <button id="download-btn">download</button>
+                    </a>
+            </p>
+        </div>
+        <% } else if(typeof success !="undefined" && !success) { %>
+            <div class="errors">
+                <p>
+                    <%= message %>
+                </p>
+            </div>
+            <% } %>
+</body>
+
+</html>
