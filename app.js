@@ -1,8 +1,6 @@
-const exp = require('constants');
 const express = require('express')
-const path = require('path')
 const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
-
+require("dotenv").config();
 
 const app = express()
 const PORT = process.env.PORT || 3500
@@ -19,12 +17,24 @@ app.use("/", require('./routes/root'))
 app.post("/convert-mp3", async (req, res) => {
     const videoId = req.body.videoId
     if (!videoId) {
-        console.log('no video id')
         return res.render('index', { success: false, message: 'Input youtube link' })
     }
-    console.log(videoId, path.join(__dirname, 'views'))
+
+    const fetchAPI = await fetch(`https://youtube-mp36.p.rapidapi.com/dl?id=${videoId}`, {
+        "method": "GET",
+        "headers": {
+            'X-RapidAPI-Key': process.env.API_KEY,
+            'X-RapidAPI-Host': process.env.API_HOST,
+        }
+    })
+
+    const fetchResponce = await fetchAPI.json()
+
+    if (fetchResponce.status === "ok") {
+        return res.render('index', { success: true, song_title: fetchResponce?.title, song_link: fetchResponce?.link })
+    }
+    return res.render('index', { success: false, message: fetchResponce?.msg || fetchResponce?.messages })
 })
 
 
-// app.get('/', (req, res) => res.send('Hello World!'))
 app.listen(PORT, () => console.log(`Example app listening on port ${PORT}!`))
