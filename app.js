@@ -15,25 +15,33 @@ app.use(express.json())
 app.use("/", require('./routes/root'))
 
 app.post("/convert-mp3", async (req, res) => {
-    const videoId = req.body.videoId
-    if (!videoId) {
-        return res.render('index', { success: false, message: 'Input youtube link' })
-    }
+    try {
+        const videoUrl = req.body.videoUrl
+        const rexp = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/ ]{11})/gm;
 
-    const fetchAPI = await fetch(`https://youtube-mp36.p.rapidapi.com/dl?id=${videoId}`, {
-        "method": "GET",
-        "headers": {
-            'X-RapidAPI-Key': process.env.API_KEY,
-            'X-RapidAPI-Host': process.env.API_HOST,
+        if (!videoUrl || !videoUrl.match(rexp)) {
+            return res.render('index', { success: false, message: 'Invalid input. Please input YouTube video url' })
         }
-    })
 
-    const fetchResponce = await fetchAPI.json()
+        const videoId = videoUrl.match(rexp)[0].slice(-11);
 
-    if (fetchResponce.status === "ok") {
-        return res.render('index', { success: true, song_title: fetchResponce?.title, song_link: fetchResponce?.link })
+        const fetchAPI = await fetch(`https://youtube-mp36.p.rapidapi.com/dl?id=${videoId}`, {
+            "method": "GET",
+            "headers": {
+                'X-RapidAPI-Key': process.env.API_KEY,
+                'X-RapidAPI-Host': process.env.API_HOST,
+            }
+        })
+
+        const fetchResponce = await fetchAPI.json()
+
+        if (fetchResponce.status === "ok") {
+            return res.render('index', { success: true, song_title: fetchResponce?.title, song_link: fetchResponce?.link })
+        }
+        return res.render('index', { success: false, message: fetchResponce?.msg || fetchResponce?.messages })
+    } catch (err) {
+        return res.sendStatus(500).send('Whoops...Internal Server Error occured. Reload page and try again, please.')
     }
-    return res.render('index', { success: false, message: fetchResponce?.msg || fetchResponce?.messages })
 })
 
 
