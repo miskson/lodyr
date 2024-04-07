@@ -1,3 +1,40 @@
 body {
-    background-color: bisque;
+  background-color: bisque;
+}
+.wrapper {
+  border: 1px solid red;
+}
+.pg-form {
+  border: 1px solid black;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.pg-form__title {
+}
+.pg-form__subtitle {
+}
+.pg-form__input {
+    display: block;
+    margin: 14px auto;
+    padding: 10px;
+    font-size: 14px;
+    width: 600px;
+}
+.pg-form__button {
+    display: block;
+    margin: 14px auto;
+    padding: 10px;
+    font-size: 14px;
+}
+
+.pg-notification {
+}
+.pg-notification__success {
+}
+.pg-notification__dwnload-link {
+}
+.pg-notification__dwnload-btn {
+}
+.pg-notification__errors {
 }

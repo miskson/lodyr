@@ -9,28 +9,32 @@
 </head>
 
 <body>
-    <form action="/convert-mp3" method="POST" id="convert-form">
-        <h1>Lodyr</h1>
-        <h2>YouTube to mp3 loader</h2>
-        <input type="text" name="videoUrl" placeholder="paste youtube link ID" />
-        <button id="convert-btn">Convert</button>
-    </form>
-    <% if(typeof success !="undefined" && success) { %>
-        <div class="success">
-            <p>
-                <%= song_title %>
-                    <a href="<%= song_link %>">
-                        <button id="download-btn">Download</button>
-                    </a>
-            </p>
-        </div>
-        <% } else if(typeof success !="undefined" && !success) { %>
-            <div class="errors">
-                <p>
-                    <%= message %>
-                </p>
-            </div>
-            <% } %>
+    <div class="wrapper">
+        <form action="/convert-mp3" method="POST" id="convert-form" class="pg-form">
+            <h1 class="pg-form__title">Lodyr</h1>
+            <h2 class="pg-form__subtitle">YouTube to mp3 loader</h2>
+            <input type="text" name="videoUrl" class="pg-form__input" placeholder="paste youtube link ID" />
+            <% if(typeof success !="undefined" && success) { %>
+                <div class="pg-notification">
+                    <div class="pg-notification__success">
+                        <p>
+                            <%= song_title %>
+                                <a href="<%= song_link %>" class="pg-notification__dwnload-link">
+                                    <button id="download-btn" class="pg-notification__dwnload-btn">Download</button>
+                                </a>
+                        </p>
+                    </div>
+                    <% } else if(typeof success !="undefined" && !success) { %>
+                        <div class="pg-notification__errors">
+                            <p>
+                                <%= message %>
+                            </p>
+                        </div>
+                </div>
+                <% } %>
+                <button id="convert-btn" class="pg-form__button">Convert</button>
+        </form>
+    </div>
 </body>
 
 </html>
