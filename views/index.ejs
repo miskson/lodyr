@@ -12,27 +12,31 @@
     <div class="wrapper">
         <form action="/convert-mp3" method="POST" id="convert-form" class="pg-form">
             <h1 class="pg-form__title">Lodyr</h1>
-            <h2 class="pg-form__subtitle">YouTube to mp3 loader</h2>
-            <input type="text" name="videoUrl" class="pg-form__input" placeholder="paste youtube link ID" />
+            <h2 class="pg-form__subtitle">YouTube to .mp3 coverter</h2>
+            <p>Paste YouTube url of video you want to convert in the input below:</p>
+            <small>(Video must not exceed 10min. lenght)</small>
+            <input type="text" name="videoUrl" class="pg-form__input" placeholder="YouTube url goes here..." />
             <% if(typeof success !="undefined" && success) { %>
                 <div class="pg-notification">
                     <div class="pg-notification__success">
                         <p>
                             <%= song_title %>
-                                <a href="<%= song_link %>" class="pg-notification__dwnload-link">
-                                    <button id="download-btn" class="pg-notification__dwnload-btn">Download</button>
-                                </a>
+                            <a href="<%= song_link %>" class="pg-notification__dwnload-link">
+                                <button id="download-btn" class="pg-notification__dwnload-btn">Download</button>
+                            </a>
                         </p>
                     </div>
-                    <% } else if(typeof success !="undefined" && !success) { %>
-                        <div class="pg-notification__errors">
-                            <p>
-                                <%= message %>
-                            </p>
-                        </div>
                 </div>
-                <% } %>
-                <button id="convert-btn" class="pg-form__button">Convert</button>
+            <% } else if(typeof success !="undefined" && !success) { %>
+                <div class="pg-notification">
+                    <div class="pg-notification__errors">
+                        <small><%= message %></small>
+                        <!-- <button id="convert-btn" class="pg-form__button">Convert</button> -->
+                    </div>
+                </div>
+            <% } %>
+            <button id="convert-btn" class="pg-form__button">Convert</button>
+            <br>
         </form>
     </div>
 </body>

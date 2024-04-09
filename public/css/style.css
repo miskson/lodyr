@@ -1,40 +1,64 @@
 body {
-  background-color: bisque;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .wrapper {
-  border: 1px solid red;
 }
 .pg-form {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   width: fit-content;
   margin: 0 auto;
+  border-radius: 10px;
+  border: 1px solid gainsboro;
+  box-shadow: 1px 0px 4px gainsboro;
+  padding: 20px 40px;
 }
 
 .pg-form__title {
+  text-align: center;
+  font-size: 46px;
+  font-weight: 400;
 }
 .pg-form__subtitle {
+  text-align: center;
 }
 .pg-form__input {
     display: block;
     margin: 14px auto;
+    border-radius: 6px;
+    outline: none;
     padding: 10px;
     font-size: 14px;
     width: 600px;
 }
 .pg-form__button {
     display: block;
+    font-weight: bold;
     margin: 14px auto;
     padding: 10px;
-    font-size: 14px;
+    font-size: 20px;
+    border-radius: 10px;
+    color: white;
+    background-color: seagreen;
+    border: 1px solid black;
+    box-shadow: 0px 0px 3px black;
+}
+
+.pg-form__button:hover {
+  transition: 0.1s;
+  border: 1px solid yellowgreen;
+  background-color: yellowgreen;
 }
 
 .pg-notification {
 }
-.pg-notification__success {
+.pg-notification__success p {
+  text-align: center;
+  margin: 0 auto;
 }
 .pg-notification__dwnload-link {
 }
 .pg-notification__dwnload-btn {
 }
 .pg-notification__errors {
+  color: red;
 }
