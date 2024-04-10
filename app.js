@@ -35,8 +35,28 @@ app.post("/convert-mp3", async (req, res) => {
 
         const fetchResponce = await fetchAPI.json()
 
+        const size = ['Bytes', 'KB', 'MB', 'GB'];
+        formatBytes = (bytes) => {
+            if (bytes === 0) return '0 Bytes';
+
+            const unitIndex = Math.floor(Math.log(bytes) / Math.log(1000));// 1000 base unit
+            const formattedBytes = (bytes / 1000 ** unitIndex).toFixed(2);// 2 decimal
+
+            return `${formattedBytes} ${size[unitIndex]}`;
+        };
+
+        formatSeconds = (seconds) => {
+            return `${Math.floor(seconds / 60)} : ${Math.round(seconds - Math.floor(seconds / 60) * 60)}`
+        }
+
         if (fetchResponce.status === "ok") {
-            return res.render('index', { success: true, song_title: fetchResponce?.title, song_link: fetchResponce?.link })
+            return res.render('index', {
+                success: true,
+                song_title: fetchResponce?.title,
+                song_duration: formatSeconds(fetchResponce?.duration),
+                song_size: formatBytes(fetchResponce?.filesize),
+                song_link: fetchResponce?.link
+            })
         }
         return res.render('index', { success: false, message: fetchResponce?.msg || fetchResponce?.messages })
     } catch (err) {
