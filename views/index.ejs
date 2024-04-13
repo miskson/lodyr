@@ -25,10 +25,12 @@
                                 <%= song_duration %>&nbsp;
                             </small>
                             <%= song_title %>
-                                <a href="<%= song_link %>" class="pg-notification__dwnload-link"></a>
+                            [<%=song_size %>]
+                                <a href="<%= song_link %>" class="pg-notification__dwnload-link">
+                                        <button id="download-btn" class="pg-notification__dwnload-btn"
+                                            type="button">Download</button>
+                                </a>
                         </p>
-                        <button id="download-btn" class="pg-notification__dwnload-btn">Download [<%= song_size %>
-                                ]</button>
                     </div>
                 </div>
                 <% } else if(typeof success !="undefined" && !success) { %>
@@ -37,7 +39,6 @@
                             <small>
                                 <%= message %>
                             </small>
-                            <!-- <button id="convert-btn" class="pg-form__button">Convert</button> -->
                         </div>
                     </div>
                     <% } %>
