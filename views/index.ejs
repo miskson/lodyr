@@ -17,6 +17,10 @@
             <small>(Video must not exceed 10min. lenght)</small>
             <input type="text" name="videoUrl" class="pg-form__input" placeholder="YouTube url goes here..." />
             <button id="convert-btn" class="pg-form__button">Convert</button>
+            <div id="loader" class="pg-loader-wrapper hidden">
+                <div class="pg-loader"></div>
+                Converting...
+            </div>
             <% if(typeof success !="undefined" && success) { %>
                 <div class="pg-notification">
                     <div class="pg-notification__success">
@@ -45,5 +49,11 @@
         </form>
     </div>
 </body>
+<script>
+    window.addEventListener('submit', (e) => {
+        const loader = document.getElementById("loader")
+        loader.classList.remove("hidden")
+    })
+</script>
 
 </html>
