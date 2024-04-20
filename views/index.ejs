@@ -14,45 +14,44 @@
             <h1 class="pg-form__title">Lodyr</h1>
             <h2 class="pg-form__subtitle">YouTube to .mp3 coverter</h2>
             <p>Paste YouTube url of video you want to convert in the input below:</p>
-            <small>(Video must not exceed 10min. lenght)</small>
             <input type="text" name="videoUrl" class="pg-form__input" placeholder="YouTube url goes here..." />
+            <small>(Note: Video must not exceed 10min. lenght)</small>
             <button id="convert-btn" class="pg-form__button">Convert</button>
             <div id="loader" class="pg-loader-wrapper hidden">
                 <div class="pg-loader"></div>
-                Converting...
             </div>
             <% if(typeof success !="undefined" && success) { %>
-                <div class="pg-notification">
+                <section class="pg-notification">
                     <div class="pg-notification__success">
-                        <p>
-                            <small>
-                                <%= song_duration %>&nbsp;
-                            </small>
-                            <%= song_title %>
-                                [<%=song_size %>]
-                                    <a href="<%= song_link %>" class="pg-notification__dwnload-link">
-                                        <button id="download-btn" class="pg-notification__dwnload-btn"
-                                            type="button">Download <br> [<%=song_size %>]</button>
-                                    </a>
-                        </p>
+                            <div class="pg-notification__song-info">
+                                <small><%= song_duration %>&nbsp;</small>
+                                <span><%= song_title %></span>
+                            </div>
+                            <a href="<%= song_link %>" class="pg-notification__dwnload-link">
+                                <button id="download-btn" class="pg-notification__dwnload-btn pg-form__button--secondary" type="button">
+                                    Download <br> 
+                                    <small>[<%=song_size %>]</small>
+                                </button>
+                            </a>
                     </div>
-                </div>
+                </section>
                 <% } else if(typeof success !="undefined" && !success) { %>
-                    <div class="pg-notification">
+                    <section class="pg-notification">
                         <div class="pg-notification__errors">
-                            <small>
-                                <%= message %>
-                            </small>
+                            <small><%= message %></small>
                         </div>
-                    </div>
+                    </section>
                     <% } %>
         </form>
     </div>
 </body>
 <script>
     window.addEventListener('submit', (e) => {
+        const btn = document.getElementById("convert-btn")
         const loader = document.getElementById("loader")
         loader.classList.remove("hidden")
+        btn.setAttribute('disabled', true)
+        btn.textContent = 'Converting...'
     })
 </script>
 
