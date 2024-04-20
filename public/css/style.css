@@ -1,3 +1,179 @@
 body {
-    background-color: bisque;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: center no-repeat url('../img/yt-button-logos.jpg');
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  background-size: cover;
+}
+
+.wrapper {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  align-items: center;
+}
+
+.pg-form {
+  width: fit-content;
+  background-color: #fffffff6;
+  margin: 0 auto;
+  border-radius: 10px;
+  border: 1px solid gainsboro;
+  box-shadow: 0px 4px 16px black;
+  padding: 20px 40px;
+}
+
+.pg-form__title {
+  text-align: center;
+  font-size: 46px;
+  font-weight: 400;
+}
+.pg-form__subtitle {
+  text-align: center;
+}
+.pg-form__input {
+  display: block;
+  margin: 14px auto;
+  border-radius: 6px;
+  outline: none;
+  padding: 10px;
+  font-size: 14px;
+  width: 600px;
+  background-color: aliceblue;
+}
+
+.pg-form__button {
+  display: block;
+  font-weight: bold;
+  margin: 14px auto;
+  padding: 10px;
+  font-size: 20px;
+  border-radius: 10px;
+  color: white;
+  background-color: seagreen;
+  border: 1px solid black;
+  box-shadow: 0px 0px 3px black;
+}
+
+.pg-form__button:hover {
+  transition: 0.1s;
+  border: 1px solid yellowgreen;
+  background-color: yellowgreen;
+}
+
+.pg-form__button:disabled {
+  transition: 0.1s;
+  border: 1px solid gainsboro;
+  background-color: gray;
+  color: gainsboro;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+.pg-form__button--secondary {
+  display: block;
+  font-weight: bold;
+  margin: 14px auto;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 10px;
+  color: white;
+  background-color: #3498db;
+  border: 1px solid #3498db;;
+  box-shadow: 0px 0px 3px black;
+}
+
+.pg-form__button--secondary:hover {
+  transition: 0.1s;
+  border: 1px solid navy;
+  background-color: navy;
+}
+
+.pg-form__button--secondary:active {
+  transition: 0.1s;
+  border: 1px solid skyblue;
+  background-color: skyblue;
+}
+
+.pg-form__button--secondary:disabled {
+  transition: 0.1s;
+  border: 1px solid gainsboro;
+  background-color: gray;
+  color: gainsboro;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+.pg-notification {
+  border-top: 2px solid gainsboro;
+}
+
+.pg-notification__success p {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.pg-notification__song-info {
+  text-align: center;
+  margin: 14px auto;
+  font-size: 18px;
+  padding: 10px 0;
+  background-color: aliceblue;
+  border: 1px solid gainsboro;
+  border-radius: 5px;
+}
+
+.pg-notification__dwnload-link {
+  text-decoration: none;
+}
+
+.pg-notification__dwnload-btn {
+  display: block;
+  margin: 0 auto;
+}
+
+.pg-notification__dwnload-btn small {
+  font-weight: 400;
+}
+
+.pg-notification__errors {
+  color: red;
+}
+
+.pg-loader-wrapper {
+  text-align: center;
+  margin: 20px;
+}
+
+.pg-loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 60px;
+  height: 60px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+  margin: 0 auto;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.hidden {
+  display: none;
+}
+
+.btn-disabled {
+  background-color: gray;
+  color: gainsboro;
 }
