@@ -1,19 +1,27 @@
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background: center no-repeat url('../img/yt-button-logos.jpg');
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  background-size: cover;
 }
 
 .wrapper {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  align-items: center;
 }
 
 .pg-form {
-  /* border: 1px solid black; */
   width: fit-content;
-  background-color: white;
+  background-color: #fffffff6;
   margin: 0 auto;
   border-radius: 10px;
   border: 1px solid gainsboro;
-  box-shadow: 1px 0px 4px gainsboro;
+  box-shadow: 0px 4px 16px black;
   padding: 20px 40px;
 }
 
@@ -98,7 +106,6 @@ body {
   cursor: not-allowed;
 }
 
-
 .pg-notification {
   border-top: 2px solid gainsboro;
 }
@@ -109,12 +116,12 @@ body {
 }
 
 .pg-notification__song-info {
-  /* border: 1px solid red; */
   text-align: center;
   margin: 14px auto;
   font-size: 18px;
   padding: 10px 0;
   background-color: aliceblue;
+  border: 1px solid gainsboro;
   border-radius: 5px;
 }
 
