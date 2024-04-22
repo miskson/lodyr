@@ -177,3 +177,18 @@ body {
   background-color: gray;
   color: gainsboro;
 }
+
+@media (max-width: 700px) {
+  .pg-form {
+    padding: 20px 16px;
+  }
+
+  .pg-form__input {
+    width: 90%;
+    padding: 20px 10px;
+  }
+
+  .pg-form__subtext {
+    margin-left: 2%;
+  }
+}
