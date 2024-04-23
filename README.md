@@ -1,6 +1,6 @@
 # Lodyr: simple YT to MP3 converter
  
-## Lodyr is an app that convert YouTube videos to MP3 format using dedicated API and returns link for the converted file download. 
+### Lodyr is an app that convert YouTube videos to MP3 format using dedicated API and returns link for the converted file download. 
 
 This project is an example full-stack project that demonstrates usage of node and express.js possibilities AND also my attempt to create my own YT to mp3 converter for personal usage without any annoying ads and simple interface. The app logic is simple as that:
 
